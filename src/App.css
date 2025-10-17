@@ -1,0 +1,27 @@
+/* Font Face Declarations */
+@font-face {
+  font-family: "Roboto-Mono";
+  src: url("/src/assets/fonts/Roboto-Mono/RobotoMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yerk";
+  src: url("/src/assets/fonts/Yerk/Yerk-Regular.ttf") format("truetype");
+}
+
+#root {
+  /* max-width: 1280px; */
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 0;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

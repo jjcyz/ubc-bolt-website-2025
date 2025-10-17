@@ -1,0 +1,124 @@
+/**
+ * CSS Custom Properties (Variables)
+ * Centralized design tokens for theming
+ */
+
+:root {
+  /* ===== COLOR PALETTE ===== */
+
+  /* Primary Brand Colors - Purple */
+  --color-primary: #614ea5;
+  --color-primary-light: #7d58d6;
+  --color-primary-dark: #443774;
+  --color-secondary: #493b7b;
+  --color-accent: #9e8eff;
+
+  /* Background Colors */
+  --color-bg-darkest: #17161b;
+  --color-bg-dark: #231c45;
+  --color-bg-medium: #150d36;
+  --color-bg-deep: #01004a;
+  --color-bg-overlay: #110b2790;
+  --color-bg-border: #21153e;
+
+  /* Text Colors */
+  --color-text-primary: #fff6f9;
+  --color-text-white: #ffffff;
+
+  /* Gradients */
+  --gradient-background: linear-gradient(
+    360deg,
+    var(--color-bg-dark) 0%,
+    var(--color-primary-light) 39%,
+    var(--color-bg-deep) 74%,
+    var(--color-bg-medium) 89%,
+    var(--color-bg-darkest) 100%
+  );
+
+  /* ===== TYPOGRAPHY ===== */
+
+  /* Font Families */
+  --font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-system: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 2rem;      /* 32px */
+  --font-size-4xl: 3.2rem;    /* 51px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line Heights */
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ===== SPACING ===== */
+
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 4rem;      /* 64px */
+  --spacing-2xl: 8rem;     /* 128px */
+
+  /* ===== LAYOUT ===== */
+
+  /* Border Radius */
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 15px;
+  --radius-round: 50%;
+
+  /* Borders */
+  --border-width-thin: 1px;
+  --border-width-normal: 2px;
+  --border-width-thick: 3px;
+  --border-width-heavy: 0.5rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-text: 5px 5px 5px var(--color-primary);
+
+  /* ===== Z-INDEX SCALE ===== */
+
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-modal: 40;
+  --z-popover: 50;
+  --z-tooltip: 60;
+
+  /* ===== TRANSITIONS ===== */
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* ===== BREAKPOINTS (for reference in JS) ===== */
+  /* These are used in media queries, but listed here for consistency */
+
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 475px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
