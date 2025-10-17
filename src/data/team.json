@@ -1,0 +1,311 @@
+{
+  "teams": [
+    {
+      "team_name": "Leadership",
+      "executives": [
+        {
+          "name": "Bradley Wong",
+          "title": "Co-President",
+          "profilepic": "Bradley.webp",
+          "linkedin": "",
+          "personalEmail": "wong.bradley@boltubc.com",
+          "clubEmail": "president@boltubc.com"
+        },
+        {
+          "name": "Antarip Kashyap",
+          "title": "Co-President",
+          "profilepic": "Antarip.webp",
+          "linkedin": "",
+          "personalEmail": "kashyap.antarip@boltubc.com",
+          "clubEmail": "president@boltubc.com"
+        },
+        {
+          "name": "Rania Salimi",
+          "title": "VP Team 1",
+          "profilepic": "Rania.webp",
+          "linkedin": "",
+          "personalEmail": "salimi.rania@boltubc.com",
+          "clubEmail": "vp@boltubc.com"
+        },
+        {
+          "name": "Nav Thukral",
+          "title": "VP Team 2",
+          "profilepic": "Nav.webp",
+          "linkedin": "",
+          "personalEmail": "thukral.nav@boltubc.com",
+          "clubEmail": "vp@boltubc.com"
+        },
+        {
+          "name": "Andrew Andrew",
+          "title": "VP Marketing",
+          "profilepic": "Andrew Andrew.webp",
+          "linkedin": "",
+          "personalEmail": "andrew.andrew@boltubc.com",
+          "clubEmail": "marketing@boltubc.com"
+        },
+        {
+          "name": "Tina Yu",
+          "title": "VP Dev",
+          "profilepic": "Tina.webp",
+          "linkedin": "",
+          "personalEmail": "yu.tina@boltubc.com",
+          "clubEmail": "developer@boltubc.com"
+        }
+      ]
+    },
+    {
+      "team_name": "Events",
+      "executives": [
+        {
+          "name": "Yash Katireddy",
+          "title": "Events Director",
+          "profilepic": "Yash.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Sarp Ata Kaan",
+          "title": "Events Director",
+          "profilepic": "Sarp.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Kiwi Mottahed",
+          "title": "Events Director",
+          "profilepic": "Kiwi mottahed.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Rohan Patel",
+          "title": "Events Executive",
+          "profilepic": "Rohan.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Aamna Mushtaq",
+          "title": "Events Executive",
+          "profilepic": "Aamna.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Serenity Liu",
+          "title": "Events Executive",
+          "profilepic": "Serenity.webp",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "team_name": "Community Relations",
+      "executives": [
+        {
+          "name": "Lindy Guan",
+          "title": "CR Director",
+          "profilepic": "Lindy.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Jove Wan",
+          "title": "CR Executive",
+          "profilepic": "Jove.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Eleanor Lam",
+          "title": "CR Executive",
+          "profilepic": "Eleanor Lam.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Calista Budi",
+          "title": "CR Executive",
+          "profilepic": "Calista Valencia.webp",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "team_name": "Advising",
+      "executives": [
+        {
+          "name": "Berke Ozgur",
+          "title": "Advising Director",
+          "profilepic": "Berke.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Joel Bonnie",
+          "title": "Advising Director",
+          "profilepic": "Joel.webp",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "team_name": "Marketing",
+      "executives": [
+        {
+          "name": "Mina Hu",
+          "title": "Marketing Director (Advisor)",
+          "profilepic": "Mina.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Min Li Wang",
+          "title": "Marketing Director",
+          "profilepic": "Min_li.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Leo Shang",
+          "title": "Marketing Executive",
+          "profilepic": "Leo Shang.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Trina Ho",
+          "title": "Marketing Executive",
+          "profilepic": "Trina.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Justin Pilson",
+          "title": "Marketing Strategist",
+          "profilepic": "Justin.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Alizah Irfan",
+          "title": "Marketing Designer",
+          "profilepic": "Alizah.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Bhavya",
+          "title": "Marketing Executive",
+          "profilepic": "Bhavya.webp",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "team_name": "Development",
+      "executives": [
+        {
+          "name": "Jacob Wu",
+          "title": "Tech Lead",
+          "profilepic": "Jacob.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Leo Shang",
+          "title": "UI/UX Designer",
+          "profilepic": "Leo Shang.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Angela Felicia",
+          "title": "Developer",
+          "profilepic": "Angela.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Parth Patel",
+          "title": "Developer",
+          "profilepic": "Parth Patel.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Andrew Ahn",
+          "title": "Developer",
+          "profilepic": "Andrew Ahn.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Kezia Rijadi",
+          "title": "Developer",
+          "profilepic": "Kez.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "David Liu",
+          "title": "Junior Developer",
+          "profilepic": "David Liu.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Julianna Huang",
+          "title": "Junior Developer",
+          "profilepic": "Julianna.webp",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "team_name": "Finance",
+      "executives": [
+        {
+          "name": "Kyle Gomez",
+          "title": "Finance Director",
+          "profilepic": "Kyle.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Adrian Chan",
+          "title": "Finance Director (Interim)",
+          "profilepic": "Adrian chang.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Helen Meng",
+          "title": "Finance Executive",
+          "profilepic": "Helen Meng.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Alejandro Garcia",
+          "title": "Finance Executive",
+          "profilepic": "Alejandro garcia.webp",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "team_name": "1st/2nd Year Representatives",
+      "executives": [
+        {
+          "name": "Jenise Yang",
+          "title": "First Year Rep (Events)",
+          "profilepic": "Jenise Yang.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Natania Huang",
+          "title": "First Year Rep (CR)",
+          "profilepic": "Natania Huang.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Julianna Huang",
+          "title": "First Year Rep",
+          "profilepic": "Julianna.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Chloe Lee",
+          "title": "Second Year Rep",
+          "profilepic": "Chloe Lee.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Carys Fong",
+          "title": "First Year Rep",
+          "profilepic": "Carys.webp",
+          "linkedin": ""
+        }
+      ]
+    }
+  ],
+  "pastExecutives": {
+    "2025-2026": []
+  }
+}

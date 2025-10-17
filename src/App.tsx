@@ -1,13 +1,15 @@
-import './App.css'
-import Hero from './sections/Hero/Hero';
-import About from './sections/About/About';
-import PartnersBanner from './components/PartnersBanner/PartnersBanner';
-import Events from './sections/Events/Events';
-import EmailBanner from './components/EmailBanner/EmailBanner';
-import Team from './sections/Team/Team';
-import Footer from './components/Footer/Footer';
+import { Routes, Route } from 'react-router-dom';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Partners from './sections/Partners';
+import Events from './sections/Events';
+import Newsletter from './sections/Newsletter';
+import Team from './sections/Team';
+import Footer from './sections/Footer';
+import TeamPage from './pages/TeamPage';
 
-function App() {
+// Home page component
+function HomePage() {
   return (
     <>
       {/* Hero section with navbar overlay */}
@@ -17,13 +19,13 @@ function App() {
       <About />
 
       {/* Partners section */}
-      <PartnersBanner />
+      <Partners />
 
       {/* Events section */}
       <Events />
 
       {/* Newsletter section */}
-      <EmailBanner />
+      <Newsletter />
 
       {/* Team section */}
       <Team />
@@ -31,7 +33,16 @@ function App() {
       {/* Footer */}
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/team" element={<TeamPage />} />
+    </Routes>
+  );
+}
+
+export default App;
