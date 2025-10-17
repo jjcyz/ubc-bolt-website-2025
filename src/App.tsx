@@ -7,6 +7,10 @@ import Newsletter from './sections/Newsletter';
 import Team from './sections/Team';
 import Footer from './sections/Footer';
 import TeamPage from './pages/TeamPage';
+import FirstBytePage from './pages/FirstBytePage';
+import BoltConnectPage from './pages/BoltConnectPage';
+import BoltCircuitPage from './pages/BoltCircuitPage';
+import BoltBootcampPage from './pages/BoltBootcampPage';
 
 // Home page component
 function HomePage() {
@@ -41,6 +45,10 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/team" element={<TeamPage />} />
+      <Route path="/events/first-byte" element={<FirstBytePage />} />
+      <Route path="/events/bolt-connect" element={<BoltConnectPage />} />
+      <Route path="/events/bolt-circuit" element={<BoltCircuitPage />} />
+      <Route path="/events/bolt-bootcamp" element={<BoltBootcampPage />} />
     </Routes>
   );
 }

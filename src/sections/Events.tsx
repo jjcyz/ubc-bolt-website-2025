@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Event, EventsData } from "../types";
 import { getEventImageUrl } from "../lib/assets";
 
@@ -8,6 +9,14 @@ const eventsData = eventsDataJson as EventsData;
 
 const Events: React.FC = () => {
   const EVENTS: Event[] = eventsData.events;
+  const navigate = useNavigate();
+
+  const eventLinks = [
+    "/events/first-byte",
+    "/events/bolt-connect",
+    "/events/bolt-circuit",
+    "/events/bolt-bootcamp"
+  ];
 
   return (
     <div className="w-full py-24 bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7]" id="Events">
@@ -47,7 +56,7 @@ const Events: React.FC = () => {
                 </div>
                 <div className="flex justify-center pt-1">
                   <button
-                    onClick={() => window.open(`/events/${event.name.toLowerCase().replace(/\s+/g, '-')}`, '_blank')}
+                    onClick={() => navigate(eventLinks[index])}
                     className="bg-white/20 hover:bg-white/30 text-gray-800 font-inter font-semibold px-3 py-1.5 text-xs rounded-full transition-all duration-200 border border-gray-300/50"
                   >
                     Learn More
