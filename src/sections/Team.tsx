@@ -5,7 +5,7 @@ import { getProfileUrl } from "../lib/assets";
 
 // Import with type assertion for JSON data
 import teamDataJson from "../data/team.json";
-const teamData = teamDataJson as TeamData;
+const teamData = teamDataJson as unknown as TeamData;
 
 const Team: React.FC = () => {
   const [allMembers, setAllMembers] = useState<Member[]>([]);
@@ -55,7 +55,7 @@ const Team: React.FC = () => {
                         loadedImages.has(index) ? "opacity-100" : "opacity-70"
                       }`}>
                         <img
-                          src={getProfileUrl(member.profilepic)}
+                          src={getProfileUrl(member.profilepic || '')}
                           alt={member.name}
                           loading="lazy"
                           onLoad={() => handleImageLoad(index)}
@@ -87,7 +87,7 @@ const Team: React.FC = () => {
                         loadedImages.has(index + firstHalf.length) ? "opacity-100" : "opacity-70"
                       }`}>
                         <img
-                          src={getProfileUrl(member.profilepic)}
+                          src={getProfileUrl(member.profilepic || '')}
                           alt={member.name}
                           loading="lazy"
                           onLoad={() => handleImageLoad(index + firstHalf.length)}

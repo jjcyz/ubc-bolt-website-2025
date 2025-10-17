@@ -10,8 +10,8 @@ export interface Member {
   name: string;
   /** Position/role title */
   title: string;
-  /** Filename of the profile picture (stored in /public/profiles/) */
-  profilepic: string;
+  /** Filename of the profile picture (stored in /public/profiles/) - optional for past executives */
+  profilepic?: string;
   /** LinkedIn profile URL (optional) */
   linkedin?: string;
   /** Personal email for leadership (optional) */

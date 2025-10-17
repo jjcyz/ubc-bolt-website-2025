@@ -6,7 +6,7 @@ import Footer from "../sections/Footer";
 
 // Import with type assertion for JSON data
 import teamDataJson from "../data/team.json";
-const teamData = teamDataJson as TeamData;
+const teamData = teamDataJson as unknown as TeamData;
 
 const TeamPage: React.FC = () => {
   const [expandedYear, setExpandedYear] = useState<string | null>(null);
@@ -42,7 +42,7 @@ const TeamPage: React.FC = () => {
         {/* Profile Picture */}
         <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300 mb-1.5">
           <img
-            src={getProfileUrl(member.profilepic)}
+            src={getProfileUrl(member.profilepic || '')}
             alt={member.name}
             className="w-full h-full object-cover"
           />
@@ -128,6 +128,25 @@ const TeamPage: React.FC = () => {
     );
   };
 
+  const renderPastMemberCard = (member: Member) => {
+    return (
+      <div
+        key={`${member.name}-${member.title}`}
+        className="flex flex-col items-center text-center"
+      >
+        {/* Name */}
+        <h3 className="font-inter text-xs font-bold text-gray-900 mb-0.5 leading-tight">
+          {member.name}
+        </h3>
+
+        {/* Title */}
+        <p className="font-inter text-[11px] text-gray-600 leading-tight">
+          {member.title}
+        </p>
+      </div>
+    );
+  };
+
   const renderPastExecutives = () => {
     const years = Object.keys(teamData.pastExecutives).sort().reverse();
 
@@ -164,8 +183,8 @@ const TeamPage: React.FC = () => {
               {/* Expanded Content */}
               {isExpanded && executives.length > 0 && (
                 <div className="mt-3 p-4 bg-white rounded-lg border border-gray-300">
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-12 justify-items-center">
-                    {executives.map(member => renderMemberCard(member))}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-4">
+                    {executives.map(member => renderPastMemberCard(member))}
                   </div>
                 </div>
               )}
