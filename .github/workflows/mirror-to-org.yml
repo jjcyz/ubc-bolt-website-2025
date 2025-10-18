@@ -9,22 +9,12 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Debug secret
+      - name: Push to org repo
         run: |
-          if [ -z "${{ secrets.ORG_REPO_PAT }}" ]; then
-            echo "❌ SECRET IS EMPTY!"
-            exit 1
-          else
-            echo "✅ Secret is set (length: ${#SECRET})"
-          fi
-        env:
-          SECRET: ${{ secrets.ORG_REPO_PAT }}
-
-      - name: Mirror to org repo
-        run: |
-          git remote add mirror https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/BOLT-UBC/BOLT-website-2025.git
-          git push mirror main --force
+          git remote add org https://x-access-token:${{TOKEN}}@github.com/BOLT-UBC/BOLT-website-2025.git
+          git push org main --force
