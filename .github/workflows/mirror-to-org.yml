@@ -1,4 +1,4 @@
-name: Mirror to Org Repo
+name: Mirror to Org
 
 on:
   push:
@@ -9,34 +9,11 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Set up Git
+      - name: Mirror to org repo
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-
-      - name: Remove workflow file and commit
-        run: |
-          # Remove the mirror workflow so it doesn't appear in org repo
-          rm -rf .github/workflows/mirror-to-org.yml
-          git add -A
-          git commit -m "Remove mirror workflow for org repo" || echo "No changes to commit"
-
-      - name: Push to organization repo
-        run: |
-          # Configure git credentials
-          git remote add org https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/BOLT-UBC/BOLT-website-2025.git
-
-          # Push main branch
-          git push org HEAD:main --force
-
-          # Push tags if any
-          git push org --tags --force || echo "No tags to push"
-
-          echo "✅ Successfully mirrored to org repo (workflow excluded)"
-
-
+          git remote add mirror https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/BOLT-UBC/BOLT-website-2025.git
+          git push mirror main --force
