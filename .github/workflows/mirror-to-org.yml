@@ -1,5 +1,6 @@
 name: Mirror to Org
 
+# Automatically mirrors code to BOLT-UBC organization repo
 on:
   push:
     branches:
