@@ -24,7 +24,7 @@ const Newsletter: React.FC = memo(() => {
   };
 
   return (
-    <section className="w-full py-12 md:py-16 flex items-center justify-center bg-gradient-to-r from-[#614ea5] to-[#493b7b]" id="Newsletter">
+    <section className="w-full py-16 md:py-16 flex items-center justify-center bg-gradient-to-r from-[#614ea5] to-[#493b7b]" id="Newsletter">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     <div className="text-white text-left max-w-lg">
                       <h2 className="font-inter text-sm font-normal mb-2 lowercase italic">Newsletter</h2>
@@ -35,23 +35,23 @@ const Newsletter: React.FC = memo(() => {
                     </div>
 
         <div className="flex justify-center lg:justify-end">
-          <form onSubmit={handleSubmit} className="w-full max-w-md">
-            <div className="bg-white/20 backdrop-blur-lg rounded-full p-2 shadow-lg flex flex-col sm:flex-row gap-2 sm:gap-0">
+          <form onSubmit={handleSubmit} className="w-full max-w-md px-2 sm:px-0">
+            <div className="bg-white/20 backdrop-blur-lg rounded-full p-2 shadow-lg flex items-center">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="flex-1 bg-transparent text-white placeholder-white/70 px-4 py-3 rounded-full border-none outline-none font-inter text-sm"
+                placeholder="Enter your email"
+                className="flex-1 bg-transparent text-white placeholder-white/70 px-4 py-2.5 rounded-full border-none outline-none font-inter text-sm focus:outline-none"
                 required
                 disabled={isLoading}
               />
               <button
                 type="submit"
-                className="bg-white/20 backdrop-blur-md text-white font-inter font-semibold px-6 py-3 rounded-full hover:bg-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm whitespace-nowrap"
+                className="bg-white/20 text-white font-inter font-semibold px-5 sm:px-6 py-2.5 rounded-full hover:bg-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm whitespace-nowrap flex-shrink-0"
                 disabled={isLoading || isSubscribed}
               >
-                {isLoading ? "Subscribing..." : isSubscribed ? "Subscribed!" : "Submit"}
+                {isLoading ? "Subscribing..." : isSubscribed ? "Subscribed!" : "Subscribe"}
               </button>
             </div>
             {isSubscribed && (

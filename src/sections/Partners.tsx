@@ -65,16 +65,16 @@ const Partners: React.FC = memo(() => {
   }, [partners.length]);
 
   return (
-    <section className="w-full py-12 md:py-16 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex items-center justify-center" id="Partners">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center">
-        <p className="font-inter text-xs sm:text-sm leading-relaxed opacity-90 text-white mb-8 md:mb-12">
-          Collaborating with leading organizations and companies to bring real-world data experiences to our community
+    <section className="w-full py-16 md:py-16 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex items-center justify-center overflow-hidden" id="Partners">
+      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 md:px-8 text-center">
+        <p className="font-inter text-xs sm:text-sm leading-relaxed opacity-90 text-white mb-8 md:mb-12 max-w-2xl mx-auto px-2 break-words">
+          Collaborating with leading organizations to bring real-world data experiences to our community
         </p>
 
-        <div className="relative overflow-hidden">
-          <div className="flex gap-8 will-change-transform" ref={carouselRef} style={{ transform: 'translate3d(0, 0, 0)' }}>
+        <div className="relative w-full overflow-x-auto overflow-y-hidden md:overflow-hidden scrollbar-hide">
+          <div className="flex gap-6 md:gap-8 will-change-transform py-2" ref={carouselRef} style={{ transform: 'translate3d(0, 0, 0)' }}>
             {duplicatedPartners.map((partner, index) => (
-              <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-6 min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+              <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-4 md:p-6 min-w-[160px] md:min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
                 <img
                   src={partner.logo}
                   alt={partner.name}

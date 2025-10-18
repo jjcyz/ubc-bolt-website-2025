@@ -7,7 +7,7 @@ import { SITE_URLS } from "../config";
 const Hero: React.FC = () => {
 
   return (
-    <div className="flex items-center justify-start bg-gradient-to-br from-[#1a0b2e] via-[#614ea5] to-[#493b7b] w-full h-screen min-h-screen px-4 sm:px-6 md:px-16 relative overflow-hidden" id="Home">
+    <div className="flex items-center justify-start bg-gradient-to-br from-[#1a0b2e] via-[#614ea5] to-[#493b7b] w-full min-h-[110vh] px-4 sm:px-6 md:px-16 relative overflow-hidden -mt-0 top-0" id="Home">
       <SpaceScene />
       <Navbar />
       <div className="flex flex-col justify-center items-start max-w-3xl p-4 md:p-8 gap-6 relative z-20">

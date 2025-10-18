@@ -3,7 +3,7 @@ import byteImage from "../assets/images/Byte.webp";
 
 const About: React.FC = memo(() => {
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7] text-black text-left w-full py-16 md:py-24 px-4 sm:px-6 md:px-8 relative overflow-hidden" id="About">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7] text-black text-left w-full py-20 md:py-24 px-4 sm:px-6 md:px-8 relative overflow-hidden" id="About">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div>
           <h2 className="font-inter text-sm md:text-base font-normal text-gray-600 mb-2 lowercase italic">About us</h2>
@@ -23,11 +23,11 @@ const About: React.FC = memo(() => {
             </p>
           </div>
         </div>
-        <div className="hidden lg:flex justify-center items-center">
+        <div className="flex justify-center items-center mt-8 lg:mt-0">
           <img
             src={byteImage}
             alt="UBC BOLT Community"
-            className="w-64 h-auto object-contain"
+            className="w-48 sm:w-56 md:w-64 h-auto object-contain"
             loading="lazy"
             decoding="async"
             width="256"

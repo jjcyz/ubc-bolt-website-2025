@@ -33,7 +33,7 @@ const Team: React.FC = () => {
   };
 
   return (
-                <div className="w-full py-16 md:py-24 bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7] flex flex-col items-center overflow-hidden relative" id="Team">
+                <div className="w-full py-20 md:py-24 bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7] flex flex-col items-center overflow-hidden relative" id="Team">
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-8 md:mb-12">
         <h2 className="font-inter text-sm font-normal text-gray-600 mb-2 lowercase italic">Team</h2>
         <h1 className="font-inter text-2xl sm:text-3xl font-bold text-black mb-4 md:mb-6 leading-tight">Meet Our Team</h1>
@@ -46,7 +46,7 @@ const Team: React.FC = () => {
             <div className="w-full overflow-x-auto" style={{ cursor: 'grab' }}>
               <div className="flex gap-8 py-4 will-change-transform"
                    style={{
-                     animation: 'scroll-right 30s linear infinite',
+                     animation: 'scroll-right 20s linear infinite',
                      transform: 'translate3d(0, 0, 0)'
                    }}>
                 {[...firstHalf, ...firstHalf].map((member, index) => (
@@ -82,7 +82,7 @@ const Team: React.FC = () => {
             <div className="w-full overflow-x-auto" ref={carouselRef} style={{ cursor: 'grab' }}>
               <div className="flex gap-8 py-4 will-change-transform"
                    style={{
-                     animation: 'scroll-left 30s linear infinite',
+                     animation: 'scroll-left 20s linear infinite',
                      transform: 'translate3d(0, 0, 0)'
                    }}>
                 {[...secondHalf, ...secondHalf].map((member, index) => (
@@ -117,7 +117,7 @@ const Team: React.FC = () => {
           <div className="mt-8">
             <button
               onClick={() => navigate('/team')}
-              className="bg-black/20 backdrop-blur-lg text-gray-900 font-inter font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:bg-black/30"
+              className="bg-white/90 backdrop-blur-lg text-gray-900 font-inter font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:bg-white shadow-md hover:shadow-lg"
             >
               View More
             </button>

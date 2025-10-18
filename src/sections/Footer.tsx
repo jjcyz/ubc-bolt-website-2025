@@ -32,12 +32,12 @@ function Footer() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-r from-[#614ea5] to-[#493b7b] text-white py-8 md:py-12">
+    <div className="w-full bg-gradient-to-r from-[#614ea5] to-[#493b7b] text-white py-12 md:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Footer Navigation - Single Row */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-center gap-8 mb-8">
           {/* Social Links - Left Side */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center lg:items-start">
             <div className="flex items-center gap-6">
             <a
               href={SOCIAL_LINKS.linkedin}
@@ -110,7 +110,7 @@ function Footer() {
           </div>
 
           {/* Navigation Directories - Right Side */}
-          <div className="flex flex-wrap items-center gap-6 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm max-w-md lg:max-w-none mx-auto lg:mx-0">
             <button onClick={() => handleNavigation('About')} className="font-inter text-white/80 hover:text-white transition-colors">
               About
             </button>
@@ -133,7 +133,7 @@ function Footer() {
         </div>
 
         {/* Land Acknowledgement - Bottom */}
-        <div className="pt-8">
+        <div className="pt-12 mt-8">
           <p className="font-inter text-xs text-white/80 leading-relaxed text-center mx-auto mb-3">
             UBC BOLT respectfully acknowledges that we are located on the traditional, ancestral, and unceded territory of the xʷməθkʷəy̓əm (Musqueam) people. The Musqueam people have been stewards of this land since time immemorial. We are grateful for the opportunity to live, work, and learn on this territory, and we are committed to building respectful relationships with Indigenous peoples and communities.
           </p>
