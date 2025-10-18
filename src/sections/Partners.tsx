@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 
-const Partners: React.FC = () => {
+const Partners: React.FC = memo(() => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   // Partner logos
@@ -35,7 +35,7 @@ const Partners: React.FC = () => {
           position = 0;
         }
 
-        carousel.style.transform = `translateX(${position}px)`;
+        carousel.style.transform = `translate3d(${position}px, 0, 0)`;
       }
       animationId = requestAnimationFrame(animate);
     };
@@ -65,20 +65,24 @@ const Partners: React.FC = () => {
   }, [partners.length]);
 
   return (
-    <section className="w-full py-16 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex items-center justify-center" id="Partners">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <p className="font-inter text-sm leading-relaxed opacity-90 text-white mb-12">
+    <section className="w-full py-12 md:py-16 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex items-center justify-center" id="Partners">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+        <p className="font-inter text-xs sm:text-sm leading-relaxed opacity-90 text-white mb-8 md:mb-12">
           Collaborating with leading organizations and companies to bring real-world data experiences to our community
         </p>
 
         <div className="relative overflow-hidden">
-          <div className="flex gap-8" ref={carouselRef}>
+          <div className="flex gap-8 will-change-transform" ref={carouselRef} style={{ transform: 'translate3d(0, 0, 0)' }}>
             {duplicatedPartners.map((partner, index) => (
               <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-6 min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
                 <img
                   src={partner.logo}
                   alt={partner.name}
                   className="w-full h-auto object-contain max-h-24"
+                  loading="lazy"
+                  decoding="async"
+                  width="200"
+                  height="96"
                 />
               </div>
             ))}
@@ -87,6 +91,8 @@ const Partners: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Partners.displayName = 'Partners';
 
 export default Partners;

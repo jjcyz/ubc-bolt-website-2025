@@ -45,6 +45,10 @@ const TeamPage: React.FC = () => {
             src={getProfileUrl(member.profilepic || '')}
             alt={member.name}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            width="80"
+            height="80"
           />
         </div>
 
@@ -116,12 +120,12 @@ const TeamPage: React.FC = () => {
 
   const renderTeamSection = (team: TeamType, isLeadership: boolean = false) => {
     return (
-      <section key={team.team_name} className="mb-8">
-        <h2 className="font-inter text-base font-bold text-gray-900 mb-8 text-center">
+      <section key={team.team_name} className="mb-6 md:mb-8">
+        <h2 className="font-inter text-sm sm:text-base font-bold text-gray-900 mb-6 md:mb-8 text-center">
           {team.team_name}
         </h2>
 
-        <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 max-w-[1400px] mx-auto">
+        <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-12 max-w-[1400px] mx-auto">
           {team.executives.map(member => renderMemberCard(member, isLeadership))}
         </div>
       </section>
@@ -151,8 +155,8 @@ const TeamPage: React.FC = () => {
     const years = Object.keys(teamData.pastExecutives).sort().reverse();
 
     return (
-      <section className="mb-8">
-        <h2 className="font-inter text-base font-bold text-gray-900 mb-8 text-center">
+      <section className="mb-6 md:mb-8">
+        <h2 className="font-inter text-sm sm:text-base font-bold text-gray-900 mb-6 md:mb-8 text-center">
           Past Executives
         </h2>
 
@@ -209,33 +213,33 @@ const TeamPage: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="pt-32 pb-10 px-4">
+      <div className="pt-24 md:pt-32 pb-10 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
-          <div className="text-center mb-6">
-            <h1 className="font-inter text-2xl font-bold text-gray-900 mb-1">
+          <div className="text-center mb-6 md:mb-8">
+            <h1 className="font-inter text-xl sm:text-2xl font-bold text-gray-900 mb-1 md:mb-2">
               Our Team
             </h1>
-            <p className="font-inter text-xs text-gray-600">
+            <p className="font-inter text-xs sm:text-sm text-gray-600">
               Meet the dedicated members who make BOLT possible
             </p>
           </div>
 
           {/* Leadership Section - Presidents First */}
           {presidents.length > 0 && (
-            <section className="mb-8">
-              <h2 className="font-inter text-base font-bold text-gray-900 mb-8 text-center">
+            <section className="mb-6 md:mb-8">
+              <h2 className="font-inter text-sm sm:text-base font-bold text-gray-900 mb-6 md:mb-8 text-center">
                 Leadership
               </h2>
 
               {/* Presidents Row */}
-              <div className="flex justify-center gap-6 mb-4">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-4">
                 {presidents.map(member => renderMemberCard(member, true))}
               </div>
 
               {/* VPs Grid */}
               {vps.length > 0 && (
-                <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 max-w-[1400px] mx-auto">
+                <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-8 md:gap-y-12 max-w-[1400px] mx-auto">
                   {vps.map(member => renderMemberCard(member, true))}
                 </div>
               )}

@@ -16,14 +16,14 @@ const FirstBytePage: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="pt-32 pb-16 px-6">
+      <div className="pt-24 md:pt-32 pb-12 md:pb-16 px-4 sm:px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
-          <div className="text-center mb-12">
-            <h1 className="font-inter text-5xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="font-inter text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">
               First Byte
             </h1>
-            <p className="font-inter text-lg text-gray-600">
+            <p className="font-inter text-base sm:text-lg text-gray-600">
               An introductory workshop series for beginners covering fundamental data analysis tools, Excel, SQL, and data visualization basics.
             </p>
           </div>

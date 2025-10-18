@@ -19,13 +19,13 @@ const Events: React.FC = () => {
   ];
 
   return (
-    <div className="w-full py-24 bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7]" id="Events">
-      <div className="w-full max-w-6xl mx-auto px-8">
-        <div className="mb-12">
+    <div className="w-full py-16 md:py-24 bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7]" id="Events">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="mb-8 md:mb-12">
           <h2 className="font-inter text-sm font-normal text-gray-600 mb-2 lowercase italic">Events</h2>
-          <h1 className="font-inter text-3xl font-bold text-black mb-6 leading-tight">Our Events</h1>
+          <h1 className="font-inter text-2xl sm:text-3xl font-bold text-black mb-4 md:mb-6 leading-tight">Our Events</h1>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-9 gap-y-9">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-9">
           {EVENTS.slice(0, 4).map((event, index) => {
             const eventDescriptions = [
               "Our flagship bootcamp introducing students to data analytics through hands-on projects and mentorship from industry professionals.",
@@ -42,6 +42,9 @@ const Events: React.FC = () => {
                   alt={event.name}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="338"
                 />
               </div>
               <div className="space-y-2">

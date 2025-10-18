@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { SOCIAL_LINKS, SITE_URLS, getCopyrightText } from "../config";
 
-export default function Footer() {
+function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
   const isTeamPage = location.pathname === '/team';
@@ -31,8 +32,8 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full bg-gradient-to-r from-[#614ea5] to-[#493b7b] text-white py-12">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="w-full bg-gradient-to-r from-[#614ea5] to-[#493b7b] text-white py-8 md:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         {/* Footer Navigation - Single Row */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
           {/* Social Links - Left Side */}
@@ -167,3 +168,7 @@ export default function Footer() {
     </div>
   );
 }
+
+Footer.displayName = 'Footer';
+
+export default memo(Footer);

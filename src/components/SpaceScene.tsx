@@ -2,9 +2,34 @@ import React, { useEffect, useRef } from 'react';
 
 const SpaceScene: React.FC = () => {
   const mountRef = useRef<HTMLDivElement>(null);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     if (!mountRef.current) return;
+
+    // Store mount ref for cleanup
+    const currentMount = mountRef.current;
+
+    // Setup Intersection Observer to pause animation when not visible
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        isVisibleRef.current = entry.isIntersecting;
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.1,
+    });
+
+    if (currentMount) {
+      observer.observe(currentMount);
+    }
+
+    const cleanupObserver = () => {
+      if (currentMount) {
+        observer.unobserve(currentMount);
+      }
+    };
 
     // Create canvas
     const canvas = document.createElement('canvas');
@@ -22,7 +47,7 @@ const SpaceScene: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Star data
+    // Star data with realistic properties
     const stars: Array<{
       x: number;
       y: number;
@@ -30,6 +55,10 @@ const SpaceScene: React.FC = () => {
       size: number;
       color: string;
       speed: number;
+      brightness: number;      // For twinkling effect
+      twinkleSpeed: number;    // How fast it twinkles
+      twinklePhase: number;    // Current phase in twinkle cycle
+      temperature: number;     // Star temperature for realistic colors
     }> = [];
 
     // Explosion particles
@@ -85,30 +114,48 @@ const SpaceScene: React.FC = () => {
           canvas.width = width;
           canvas.height = height;
 
-          // Recreate stars with new dimensions if needed
+          // Recreate stars with realistic properties
           if (stars.length === 0) {
-            for (let i = 0; i < 500; i++) {
+            for (let i = 0; i < 300; i++) {
+              const temp = Math.random();
+              // Star temperature determines color (like real stars)
+              let color;
+              if (temp < 0.3) {
+                color = '#9bb0ff'; // Blue giants (hot)
+              } else if (temp < 0.6) {
+                color = '#ffffff'; // White stars (medium)
+              } else if (temp < 0.85) {
+                color = '#fff4ea'; // Yellow-white (sun-like)
+              } else {
+                color = '#ffcc99'; // Orange-red (cooler)
+              }
+
+              const size = Math.random() * 2.5 + 0.5;
               stars.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
                 z: Math.random() * 1000,
-                size: Math.random() * 3 + 1,
-                color: Math.random() < 0.6 ? '#9e8eff' : Math.random() < 0.8 ? '#614ea5' : Math.random() < 0.9 ? '#493b7b' : '#ffffff',
-                speed: Math.random() * 2 + 0.5
+                size: size,
+                color: color,
+                speed: Math.random() * 2 + 0.5,
+                brightness: Math.random() * 0.5 + 0.5, // 0.5-1.0 base brightness
+                twinkleSpeed: Math.random() * 0.02 + 0.01, // Slow twinkle
+                twinklePhase: Math.random() * Math.PI * 2,
+                temperature: temp
               });
             }
           }
 
-          // Create nebula clouds
+          // Create nebula clouds (subtle, minimal opacity for cleaner look)
           if (nebulaClouds.length === 0) {
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 3; i++) {
               nebulaClouds.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                radius: Math.random() * 150 + 100,
-                color: Math.random() < 0.5 ? '#9e8eff' : '#614ea5',
-                alpha: Math.random() * 0.15 + 0.05,
-                drift: Math.random() * 0.3 - 0.15
+                radius: Math.random() * 200 + 150,
+                color: Math.random() < 0.5 ? '#7c3aed' : '#8b5cf6', // Brighter purple tones
+                alpha: Math.random() * 0.06 + 0.02, // Much lower opacity (was 0.15-0.20, now 0.02-0.08)
+                drift: Math.random() * 0.2 - 0.1
               });
             }
           }
@@ -116,14 +163,14 @@ const SpaceScene: React.FC = () => {
       }
     };
 
-    // Create explosion on click
+    // Create explosion on click (reduced particle count for performance)
     const createExplosion = (clickX: number, clickY: number) => {
       const rect = canvas.getBoundingClientRect();
       const x = clickX - rect.left;
       const y = clickY - rect.top;
 
       const particles = [];
-      const particleCount = 50;
+      const particleCount = 30;
 
       for (let i = 0; i < particleCount; i++) {
         const angle = (Math.PI * 2 * i) / particleCount;
@@ -136,7 +183,7 @@ const SpaceScene: React.FC = () => {
           life: 1,
           maxLife: Math.random() * 60 + 40,
           size: Math.random() * 3 + 1,
-          color: Math.random() < 0.5 ? '#e879f9' : Math.random() < 0.7 ? '#9e8eff' : '#ffffff'
+          color: Math.random() < 0.4 ? '#ffffff' : Math.random() < 0.7 ? '#f0abfc' : '#c084fc' // Brighter explosion colors
         });
       }
 
@@ -195,14 +242,21 @@ const SpaceScene: React.FC = () => {
     let animationId: number;
 
     const animate = () => {
-      // Clear canvas with dark purple gradient
+      // Skip animation if not visible (performance optimization)
+      if (!isVisibleRef.current) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+
+      // Clear canvas with deep space gradient (improved contrast and vibrancy)
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, 0,
         canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height)
       );
-      gradient.addColorStop(0, '#1a0b2e');
-      gradient.addColorStop(0.5, '#16213e');
-      gradient.addColorStop(1, '#0f0f23');
+      gradient.addColorStop(0, '#2d1b4e');  // Deeper vibrant purple center
+      gradient.addColorStop(0.4, '#1a0b2e'); // Rich dark purple
+      gradient.addColorStop(0.8, '#0d0618'); // Very dark purple-black
+      gradient.addColorStop(1, '#000000');   // Pure black edges
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -248,26 +302,27 @@ const SpaceScene: React.FC = () => {
         comet.trail.push({ x: comet.x, y: comet.y, alpha: 1 });
         if (comet.trail.length > 20) comet.trail.shift();
 
-        // Draw trail
+        // Draw trail with vibrant colors
         comet.trail.forEach((point, i) => {
           const alpha = (i / comet.trail.length) * 0.8;
           ctx.save();
           ctx.globalAlpha = alpha;
-          ctx.fillStyle = '#e879f9';
+          ctx.fillStyle = '#c084fc'; // Brighter purple
           ctx.beginPath();
           ctx.arc(point.x, point.y, comet.size * (i / comet.trail.length), 0, Math.PI * 2);
           ctx.fill();
           ctx.restore();
         });
 
-        // Draw comet head
+        // Draw comet head with vibrant gradient
         const cometGradient = ctx.createRadialGradient(
           comet.x, comet.y, 0,
           comet.x, comet.y, comet.size * 4
         );
         cometGradient.addColorStop(0, '#ffffff');
-        cometGradient.addColorStop(0.3, '#e879f9');
-        cometGradient.addColorStop(1, '#9e8eff00');
+        cometGradient.addColorStop(0.3, '#f0abfc'); // Bright pink-purple
+        cometGradient.addColorStop(0.6, '#c084fc'); // Bright purple
+        cometGradient.addColorStop(1, '#a78bfa00'); // Transparent purple
 
         ctx.fillStyle = cometGradient;
         ctx.beginPath();
@@ -333,10 +388,14 @@ const SpaceScene: React.FC = () => {
         }
       }
 
-      // Update and draw stars
+      // Update and draw hyperrealistic stars
       stars.forEach((star) => {
         // Move stars (faster during meteor shower)
         star.z -= star.speed * (meteorShowerActive ? 2 : 1);
+
+        // Update twinkle effect
+        star.twinklePhase += star.twinkleSpeed;
+        const twinkle = Math.sin(star.twinklePhase) * 0.3 + 0.7; // 0.4-1.0 range
 
         // Reset star if it goes too far back
         if (star.z <= 0) {
@@ -358,27 +417,62 @@ const SpaceScene: React.FC = () => {
 
         // Draw star
         if (finalX >= 0 && finalX <= canvas.width && finalY >= 0 && finalY <= canvas.height) {
-          const alpha = Math.max(0, 1 - star.z / 1000);
+          const depth = Math.max(0, 1 - star.z / 1000);
           const size = star.size * (200 / star.z);
+          const brightness = star.brightness * twinkle * depth;
 
           ctx.save();
-          ctx.globalAlpha = alpha;
+          ctx.globalAlpha = brightness;
 
-          // Create star glow effect
-          const glowGradient = ctx.createRadialGradient(finalX, finalY, 0, finalX, finalY, size * 3);
-          glowGradient.addColorStop(0, star.color);
-          glowGradient.addColorStop(0.3, star.color + '80');
-          glowGradient.addColorStop(1, star.color + '00');
+          // Draw star cross/spike effect for brighter stars
+          if (size > 1.5 && brightness > 0.6) {
+            ctx.strokeStyle = star.color;
+            ctx.lineWidth = 0.5;
+            ctx.globalAlpha = brightness * 0.4;
 
-          ctx.fillStyle = glowGradient;
+            // Horizontal spike
+            ctx.beginPath();
+            ctx.moveTo(finalX - size * 4, finalY);
+            ctx.lineTo(finalX + size * 4, finalY);
+            ctx.stroke();
+
+            // Vertical spike
+            ctx.beginPath();
+            ctx.moveTo(finalX, finalY - size * 4);
+            ctx.lineTo(finalX, finalY + size * 4);
+            ctx.stroke();
+          }
+
+          ctx.globalAlpha = brightness;
+
+          // Outer glow
+          const outerGlow = ctx.createRadialGradient(finalX, finalY, 0, finalX, finalY, size * 4);
+          outerGlow.addColorStop(0, star.color);
+          outerGlow.addColorStop(0.2, star.color + 'AA');
+          outerGlow.addColorStop(0.5, star.color + '40');
+          outerGlow.addColorStop(1, star.color + '00');
+
+          ctx.fillStyle = outerGlow;
           ctx.beginPath();
-          ctx.arc(finalX, finalY, size * 3, 0, Math.PI * 2);
+          ctx.arc(finalX, finalY, size * 4, 0, Math.PI * 2);
           ctx.fill();
 
-          // Draw bright center
-          ctx.fillStyle = star.color;
+          // Inner glow (brighter core)
+          const innerGlow = ctx.createRadialGradient(finalX, finalY, 0, finalX, finalY, size * 1.5);
+          innerGlow.addColorStop(0, '#ffffff');
+          innerGlow.addColorStop(0.4, star.color);
+          innerGlow.addColorStop(1, star.color + '00');
+
+          ctx.fillStyle = innerGlow;
           ctx.beginPath();
-          ctx.arc(finalX, finalY, size, 0, Math.PI * 2);
+          ctx.arc(finalX, finalY, size * 1.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Bright center point
+          ctx.globalAlpha = brightness * 1.2;
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath();
+          ctx.arc(finalX, finalY, size * 0.6, 0, Math.PI * 2);
           ctx.fill();
 
           ctx.restore();
@@ -402,7 +496,7 @@ const SpaceScene: React.FC = () => {
 
     // Cleanup
     return () => {
-      const currentMount = mountRef.current;
+      cleanupObserver();
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
