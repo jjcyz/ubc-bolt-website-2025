@@ -3,13 +3,12 @@ import React, { useEffect, useRef } from "react";
 const Partners: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Sample partner logos - replace with actual partner logos
+  // Partner logos
   const partners = [
-    { name: "UBC AMS", logo: "🏛️" },
-    { name: "Mastercard", logo: "💳" },
-    { name: "UBC Sauder", logo: "🎓" },
-    { name: "Red Bull", logo: "🔷" },
-    { name: "CGI", logo: "🔍" },
+    { name: "UBC", logo: "/partners/ubc.webp" },
+    { name: "Mastercard", logo: "/partners/mastercard.webp" },
+    { name: "Red Bull", logo: "/partners/redbull.webp" },
+    { name: "CGI", logo: "/partners/cgi.webp" },
   ];
 
   // Duplicate partners array for seamless loop
@@ -75,10 +74,12 @@ const Partners: React.FC = () => {
         <div className="relative overflow-hidden">
           <div className="flex gap-8" ref={carouselRef}>
             {duplicatedPartners.map((partner, index) => (
-              <div key={`${partner.name}-${index}`} className="flex-shrink-0 rounded-xl p-6 min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
-                <div className="text-4xl">
-                  {partner.logo}
-                </div>
+              <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-6 min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="w-full h-auto object-contain max-h-24"
+                />
               </div>
             ))}
           </div>
