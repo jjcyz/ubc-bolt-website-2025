@@ -13,6 +13,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Debug secret
+        run: |
+          if [ -z "${{ secrets.ORG_REPO_PAT }}" ]; then
+            echo "❌ SECRET IS EMPTY!"
+            exit 1
+          else
+            echo "✅ Secret is set (length: ${#SECRET})"
+          fi
+        env:
+          SECRET: ${{ secrets.ORG_REPO_PAT }}
+
       - name: Mirror to org repo
         run: |
           git remote add mirror https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/BOLT-UBC/BOLT-website-2025.git
