@@ -15,7 +15,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check secret length
+        run: |
+          TOKEN="${{ secrets.ORG_REPO_PAT }}"
+          echo "Token length: ${#TOKEN}"
+          if [ ${#TOKEN} -lt 10 ]; then
+            echo "❌ Token is too short or empty!"
+            exit 1
+          fi
+
       - name: Push to org repo
         run: |
-          git remote add org https://x-access-token:${{secrets.ORG_REPO_PAT}}@github.com/BOLT-UBC/BOLT-website-2025.git
+          git remote add org https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/BOLT-UBC/BOLT-website-2025.git
           git push org main --force
