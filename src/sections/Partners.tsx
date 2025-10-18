@@ -8,15 +8,8 @@ const Partners: React.FC = () => {
     { name: "UBC AMS", logo: "🏛️" },
     { name: "Mastercard", logo: "💳" },
     { name: "UBC Sauder", logo: "🎓" },
-    { name: "Microsoft", logo: "🔷" },
-    { name: "Google", logo: "🔍" },
-    { name: "Amazon", logo: "📦" },
-    { name: "IBM", logo: "🔵" },
-    { name: "Oracle", logo: "🔴" },
-    { name: "Salesforce", logo: "☁️" },
-    { name: "Tableau", logo: "📊" },
-    { name: "Power BI", logo: "📈" },
-    { name: "Snowflake", logo: "❄️" },
+    { name: "Red Bull", logo: "🔷" },
+    { name: "CGI", logo: "🔍" },
   ];
 
   // Duplicate partners array for seamless loop

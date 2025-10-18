@@ -6,7 +6,7 @@
         {
           "name": "Nav Thukral",
           "title": "President",
-          "profilepic": "Nav.webp",
+          "profilepic": "NavThukral.webp",
           "linkedin": "",
           "personalEmail": "thukral.nav@boltubc.com",
           "clubEmail": "president@boltubc.com"
@@ -14,7 +14,7 @@
         {
           "name": "Eleanor Lam",
           "title": "VP Internal & VP Case Dev",
-          "profilepic": "Eleanor Lam.webp",
+          "profilepic": "EleanorLam.webp",
           "linkedin": "",
           "personalEmail": "lam.eleanor@boltubc.com",
           "clubEmail": "vpinternal@boltubc.com"
@@ -22,7 +22,7 @@
         {
           "name": "Kiwi Mottahed",
           "title": "VP Events",
-          "profilepic": "Kiwi mottahed.webp",
+          "profilepic": "KiwiMottahed.webp",
           "linkedin": "",
           "personalEmail": "mottahed.kiwi@boltubc.com",
           "clubEmail": "vpevents@boltubc.com"
@@ -30,7 +30,7 @@
         {
           "name": "Aadeesh Nargotra",
           "title": "VP CR",
-          "profilepic": "Aadeesh.webp",
+          "profilepic": "AadeeshNargotra.webp",
           "linkedin": "",
           "personalEmail": "nargotra.aadeesh@boltubc.com",
           "clubEmail": "vpcr@boltubc.com"
@@ -38,7 +38,7 @@
         {
           "name": "Raghav Awasthi",
           "title": "VP Marketing",
-          "profilepic": "Raghav.webp",
+          "profilepic": "RaghavAwasthi.webp",
           "linkedin": "",
           "personalEmail": "awasthi.raghav@boltubc.com",
           "clubEmail": "marketing@boltubc.com"
@@ -46,7 +46,7 @@
         {
           "name": "Jessica Zhou",
           "title": "VP Technology",
-          "profilepic": "Jessica.webp",
+          "profilepic": "JessicaZhou.webp",
           "linkedin": "",
           "personalEmail": "zhou.jessica@boltubc.com",
           "clubEmail": "technology@boltubc.com"
@@ -54,7 +54,7 @@
         {
           "name": "Chloe Lee",
           "title": "VP Finance",
-          "profilepic": "Chloe Lee.webp",
+          "profilepic": "ChloeLee.webp",
           "linkedin": "",
           "personalEmail": "lee.chloe@boltubc.com",
           "clubEmail": "finance@boltubc.com"
@@ -67,34 +67,26 @@
         {
           "name": "Antarip Kashyap",
           "title": "Advising Director",
-          "profilepic": "Antarip.webp",
-          "linkedin": "",
-          "personalEmail": "kashyap.antarip@boltubc.com",
-          "clubEmail": "advising@boltubc.com"
+          "profilepic": "AntaripKashyap.webp",
+          "linkedin": ""
         },
         {
           "name": "Bradley Wong",
           "title": "Advising Director",
-          "profilepic": "Bradley.webp",
-          "linkedin": "",
-          "personalEmail": "wong.bradley@boltubc.com",
-          "clubEmail": "advising@boltubc.com"
+          "profilepic": "BradleyWong.webp",
+          "linkedin": ""
         },
         {
           "name": "Alexy Lamoot",
           "title": "Advising Director",
-          "profilepic": "Alexy.webp",
-          "linkedin": "",
-          "personalEmail": "lamoot.alexy@boltubc.com",
-          "clubEmail": "advising@boltubc.com"
+          "profilepic": "AlexyLamoot.webp",
+          "linkedin": ""
         },
         {
           "name": "Kyle Gomez",
           "title": "Advisor (Finance)",
-          "profilepic": "Kyle.webp",
-          "linkedin": "",
-          "personalEmail": "gomez.kyle@boltubc.com",
-          "clubEmail": "advising@boltubc.com"
+          "profilepic": "KyleGomez.webp",
+          "linkedin": ""
         }
       ]
     },
@@ -104,43 +96,43 @@
         {
           "name": "Calista Budi",
           "title": "CR Director",
-          "profilepic": "Calista Valencia.webp",
+          "profilepic": "CalistaBudi.webp",
           "linkedin": ""
         },
         {
           "name": "Harshit Sethi",
           "title": "CR Director",
-          "profilepic": "Harshit.webp",
+          "profilepic": "HarshitSethi.webp",
           "linkedin": ""
         },
         {
           "name": "Nevan Leo",
           "title": "CR Executive",
-          "profilepic": "Nevan.webp",
+          "profilepic": "NevanLeo.webp",
           "linkedin": ""
         },
         {
           "name": "Ethan Le",
           "title": "CR Executive",
-          "profilepic": "Ethan.webp",
+          "profilepic": "EthanLe.webp",
           "linkedin": ""
         },
         {
           "name": "Sophia Huang",
           "title": "CR Executive",
-          "profilepic": "Sophia.webp",
+          "profilepic": "SophiaHuang.webp",
           "linkedin": ""
         },
         {
-          "name": "Manya",
+          "name": "Manya garg",
           "title": "CR Executive",
-          "profilepic": "Manya.webp",
+          "profilepic": "ManyaGarg.webp",
           "linkedin": ""
         },
         {
           "name": "Kai Wu",
           "title": "CR Executive",
-          "profilepic": "Kai.webp",
+          "profilepic": "KaiWu.webp",
           "linkedin": ""
         }
       ]
@@ -151,25 +143,25 @@
         {
           "name": "Prashant Chopra",
           "title": "Case Dev Executive",
-          "profilepic": "Prashant.webp",
+          "profilepic": "PrashantChopra.webp",
           "linkedin": ""
         },
         {
           "name": "Lucas Ho",
           "title": "Case Dev Executive",
-          "profilepic": "Lucas.webp",
+          "profilepic": "LucasHo.webp",
           "linkedin": ""
         },
         {
           "name": "Ruhani Mittal",
           "title": "Case Dev Executive",
-          "profilepic": "Ruhani.webp",
+          "profilepic": "RuhaniMittal.webp",
           "linkedin": ""
         },
         {
           "name": "Arnav Dhablania",
           "title": "Case Dev Executive",
-          "profilepic": "Arnav.webp",
+          "profilepic": "ArnavDhablania.webp",
           "linkedin": ""
         }
       ]
@@ -180,19 +172,19 @@
         {
           "name": "Aarav Alaric Bhatia",
           "title": "Events Executive",
-          "profilepic": "Aarav.webp",
+          "profilepic": "AaravAlaricBhatia.webp",
           "linkedin": ""
         },
         {
           "name": "Hannah Goharian",
           "title": "Events Executive",
-          "profilepic": "Hannah.webp",
+          "profilepic": "HannahGoharian.webp",
           "linkedin": ""
         },
         {
-          "name": "Owen",
+          "name": "Owen Chan",
           "title": "Events Executive",
-          "profilepic": "Owen.webp",
+          "profilepic": "OwenChan.webp",
           "linkedin": ""
         }
       ]
@@ -203,31 +195,31 @@
         {
           "name": "Leo Shang",
           "title": "Marketing Executive",
-          "profilepic": "Leo Shang.webp",
+          "profilepic": "LeoShang.webp",
           "linkedin": ""
         },
         {
           "name": "Jove Wan",
           "title": "Marketing Executive",
-          "profilepic": "Jove.webp",
+          "profilepic": "JoveWan.webp",
           "linkedin": ""
         },
         {
-          "name": "Divjot",
+          "name": "Divjot Virdi",
           "title": "Marketing Executive",
-          "profilepic": "Divjot.webp",
+          "profilepic": "DivjotVirdi.webp",
           "linkedin": ""
         },
         {
           "name": "Anne Nguyen",
           "title": "Marketing Executive",
-          "profilepic": "Anne.webp",
+          "profilepic": "AnneNguyen.webp",
           "linkedin": ""
         },
         {
           "name": "Felicia Amelia",
           "title": "Marketing Executive",
-          "profilepic": "Felicia.webp",
+          "profilepic": "FeliciaAmelia.webp",
           "linkedin": ""
         }
       ]
@@ -236,21 +228,21 @@
       "team_name": "Development",
       "executives": [
         {
-          "name": "Harmanjeet Singh",
-          "title": "Developer",
-          "profilepic": "Harmanjeet.webp",
-          "linkedin": ""
-        },
-        {
           "name": "Chirag Raisingh",
           "title": "Developer",
-          "profilepic": "Chirag.webp",
+          "profilepic": "ChiragRaisingh.webp",
           "linkedin": ""
         },
         {
           "name": "Chloe Sepulveda",
           "title": "Developer",
           "profilepic": "ChloeSepulveda.webp",
+          "linkedin": ""
+        },
+        {
+          "name": "Harmanjeet Singh",
+          "title": "Developer",
+          "profilepic": "HarmanjeetSingh.webp",
           "linkedin": ""
         }
       ]
@@ -261,13 +253,13 @@
         {
           "name": "Nicole Li",
           "title": "Club Ops Executive",
-          "profilepic": "Nicole.webp",
+          "profilepic": "NicoleLi.webp",
           "linkedin": ""
         },
         {
           "name": "Jacob O'Callaghan",
           "title": "Club Ops Executive",
-          "profilepic": "JacobO.webp",
+          "profilepic": "JacobOCallaghan.webp",
           "linkedin": ""
         }
       ]
@@ -278,7 +270,7 @@
         {
           "name": "Andrew Andrew",
           "title": "Finance Executive",
-          "profilepic": "Andrew Andrew.webp",
+          "profilepic": "AndrewAndrew.webp",
           "linkedin": ""
         }
       ]
@@ -287,27 +279,21 @@
       "team_name": "1st/2nd Year Representatives",
       "executives": [
         {
-          "name": "Jenise Yang",
-          "title": "First Year Rep (Events)",
-          "profilepic": "Jenise Yang.webp",
-          "linkedin": ""
-        },
-        {
           "name": "Natania Huang",
           "title": "First Year Rep (CR)",
-          "profilepic": "Natania Huang.webp",
+          "profilepic": "NataniaHuang.webp",
           "linkedin": ""
         },
         {
           "name": "Julianna Huang",
           "title": "First Year Rep",
-          "profilepic": "Julianna.webp",
+          "profilepic": "JuliannaHuang.webp",
           "linkedin": ""
         },
         {
           "name": "Carys Fong",
           "title": "First Year Rep",
-          "profilepic": "Carys.webp",
+          "profilepic": "CarysFong.webp",
           "linkedin": ""
         }
       ]
@@ -364,7 +350,7 @@
         "title": "CR Executive"
       },
       {
-        "name": "Manya",
+        "name": "Manya Garg",
         "title": "CR Executive"
       },
       {
@@ -408,7 +394,7 @@
         "title": "Marketing Executive"
       },
       {
-        "name": "Divjot",
+        "name": "Divjot Virdi",
         "title": "Marketing Executive"
       },
       {

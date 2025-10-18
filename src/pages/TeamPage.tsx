@@ -37,10 +37,10 @@ const TeamPage: React.FC = () => {
     return (
       <div
         key={`${member.name}-${member.title}`}
-        className="flex flex-col items-center pb-9"
+        className="flex flex-col items-center pb-9 w-48"
       >
         {/* Profile Picture */}
-        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300 mb-1.5">
+        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-purple-400 mb-1.5 shadow-[0_0_15px_rgba(168,85,247,0.4),0_0_30px_rgba(236,72,153,0.2)] hover:shadow-[0_0_20px_rgba(168,85,247,0.6),0_0_40px_rgba(236,72,153,0.4),0_0_60px_rgba(59,130,246,0.3)] hover:scale-110 transition-all duration-300 hover:-translate-y-1">
           <img
             src={getProfileUrl(member.profilepic || '')}
             alt={member.name}
@@ -95,7 +95,7 @@ const TeamPage: React.FC = () => {
             {member.clubEmail && (
               <a
                 href={`mailto:${member.clubEmail}`}
-                className="text-xs text-gray-900 hover:text-gray-600 text-center transition-colors"
+                className="text-xs text-gray-900 hover:text-gray-600 text-center transition-colors break-all"
               >
                 {member.clubEmail}
               </a>
@@ -103,7 +103,7 @@ const TeamPage: React.FC = () => {
             {member.personalEmail && (
               <a
                 href={`mailto:${member.personalEmail}`}
-                className="text-xs text-gray-900 hover:text-gray-600 text-center transition-colors"
+                className="text-xs text-gray-900 hover:text-gray-600 text-center transition-colors break-all"
               >
                 {member.personalEmail}
               </a>
@@ -121,7 +121,7 @@ const TeamPage: React.FC = () => {
           {team.team_name}
         </h2>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-12 justify-items-center">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 max-w-[1400px] mx-auto">
           {team.executives.map(member => renderMemberCard(member, isLeadership))}
         </div>
       </section>
@@ -132,7 +132,7 @@ const TeamPage: React.FC = () => {
     return (
       <div
         key={`${member.name}-${member.title}`}
-        className="flex flex-col items-center text-center"
+        className="flex flex-col items-center text-center w-52"
       >
         {/* Name */}
         <h3 className="font-inter text-xs font-bold text-gray-900 mb-0.5 leading-tight">
@@ -183,7 +183,7 @@ const TeamPage: React.FC = () => {
               {/* Expanded Content */}
               {isExpanded && executives.length > 0 && (
                 <div className="mt-3 p-4 bg-white rounded-lg border border-gray-300">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-4">
+                  <div className="flex flex-wrap justify-center gap-x-6 gap-y-6">
                     {executives.map(member => renderPastMemberCard(member))}
                   </div>
                 </div>
@@ -209,7 +209,7 @@ const TeamPage: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="pt-32 pb-10 px-6">
+      <div className="pt-32 pb-10 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
           <div className="text-center mb-6">
@@ -229,13 +229,13 @@ const TeamPage: React.FC = () => {
               </h2>
 
               {/* Presidents Row */}
-              <div className="flex justify-center gap-8 mb-4">
+              <div className="flex justify-center gap-6 mb-4">
                 {presidents.map(member => renderMemberCard(member, true))}
               </div>
 
               {/* VPs Grid */}
               {vps.length > 0 && (
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-12 justify-items-center">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-12 max-w-[1400px] mx-auto">
                   {vps.map(member => renderMemberCard(member, true))}
                 </div>
               )}
