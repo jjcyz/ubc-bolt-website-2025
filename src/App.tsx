@@ -5,6 +5,7 @@ import About from './sections/About';
 import Partners from './sections/Partners';
 import Events from './sections/Events';
 import Newsletter from './sections/Newsletter';
+import DataBridge from './sections/DataBridge';
 import Team from './sections/Team';
 import Footer from './sections/Footer';
 
@@ -33,6 +34,9 @@ function HomePage() {
 
       {/* Newsletter section */}
       <Newsletter />
+
+      {/* DataBridge section */}
+      <DataBridge />
 
       {/* Team section */}
       <Team />

@@ -4,7 +4,7 @@ import { NAVIGATION } from "../constants";
 import { scrollToElement } from "../lib/dom";
 
 const Navbar: React.FC = () => {
-  const sections = ["Home", "About", "Partners", "Events", "Team"];
+  const sections = ["Home", "About", "Partners", "Events", "Services", "Team"];
   const [activeSection, setActiveSection] = useState("Home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [sliderStyle, setSliderStyle] = useState({ width: 0, left: 0 });
