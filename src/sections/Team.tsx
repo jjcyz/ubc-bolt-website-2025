@@ -43,6 +43,10 @@ const Team: React.FC = () => {
         <div className="w-full flex flex-col items-center gap-4">
           {/* First Carousel - Scrolling Right */}
           <div className="relative w-full">
+            {/* Left fade */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#f8f7f3] to-transparent z-10 pointer-events-none"></div>
+            {/* Right fade */}
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#f0ede7] to-transparent z-10 pointer-events-none"></div>
             <div className="w-full overflow-x-auto" style={{ cursor: 'grab' }}>
               <div className="flex gap-8 py-4 will-change-transform"
                    style={{
@@ -79,6 +83,10 @@ const Team: React.FC = () => {
 
           {/* Second Carousel - Scrolling Left */}
           <div className="relative w-full">
+            {/* Left fade */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#f8f7f3] to-transparent z-10 pointer-events-none"></div>
+            {/* Right fade */}
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#f0ede7] to-transparent z-10 pointer-events-none"></div>
             <div className="w-full overflow-x-auto" ref={carouselRef} style={{ cursor: 'grab' }}>
               <div className="flex gap-8 py-4 will-change-transform"
                    style={{

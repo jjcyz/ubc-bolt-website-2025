@@ -15,11 +15,11 @@ const Partners: React.FC = memo(() => {
   const duplicatedPartners = [...partners, ...partners];
 
   useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
+    const carouselContainer = carouselRef.current;
+    if (!carouselContainer) return;
 
-    // Check if device supports hover (desktop) or is touch device (mobile)
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const carousel = carouselContainer.querySelector('.flex') as HTMLElement;
+    if (!carousel) return;
 
     let animationId: number;
     let position = 0;
@@ -34,19 +34,16 @@ const Partners: React.FC = memo(() => {
     };
 
     let dimensions = getDimensions();
-    let isPaused = false;
 
     const animate = () => {
-      if (!isPaused) {
-        position -= speed;
+      position -= speed;
 
-        // Reset position when we've scrolled one full set
-        if (Math.abs(position) >= partners.length * dimensions.totalWidth) {
-          position = 0;
-        }
-
-        carousel.style.transform = `translate3d(${position}px, 0, 0)`;
+      // Reset position when we've scrolled one full set
+      if (Math.abs(position) >= partners.length * dimensions.totalWidth) {
+        position = 0;
       }
+
+      carousel.style.transform = `translate3d(${position}px, 0, 0)`;
       animationId = requestAnimationFrame(animate);
     };
 
@@ -60,28 +57,7 @@ const Partners: React.FC = memo(() => {
 
     window.addEventListener('resize', handleResize);
 
-    // Only add hover events for non-touch devices
-    if (!isTouchDevice) {
-      const handleMouseEnter = () => {
-        isPaused = true;
-      };
-
-      const handleMouseLeave = () => {
-        isPaused = false;
-      };
-
-      carousel.addEventListener('mouseenter', handleMouseEnter);
-      carousel.addEventListener('mouseleave', handleMouseLeave);
-
-      return () => {
-        if (animationId) {
-          cancelAnimationFrame(animationId);
-        }
-        window.removeEventListener('resize', handleResize);
-        carousel.removeEventListener('mouseenter', handleMouseEnter);
-        carousel.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    }
+    // No hover pause functionality - let carousel run continuously
 
     return () => {
       if (animationId) {
@@ -92,28 +68,34 @@ const Partners: React.FC = memo(() => {
   }, [partners.length]);
 
   return (
-    <section className="w-full py-16 md:py-16 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex items-center justify-center overflow-hidden" id="Partners">
-      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 md:px-8 text-center">
-        <p className="font-inter text-xs sm:text-sm leading-relaxed opacity-90 text-white mb-8 md:mb-12 max-w-2xl mx-auto px-2 break-words">
+    <section className="w-full py-12 md:py-14 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex flex-col items-center justify-center overflow-hidden" id="Partners">
+      {/* Description text - centered with max width */}
+      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-6 md:mb-8">
+        <p className="font-inter text-xs sm:text-sm leading-relaxed opacity-90 text-white max-w-2xl mx-auto px-2 break-words">
           Collaborating with leading organizations to bring real-world data experiences to our community
         </p>
+      </div>
 
-        <div className="relative w-full overflow-hidden">
-          <div className="flex gap-4 sm:gap-6 md:gap-8 will-change-transform py-2" ref={carouselRef} style={{ transform: 'translate3d(0, 0, 0)' }}>
-            {duplicatedPartners.map((partner, index) => (
-              <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-2 sm:p-4 md:p-6 min-w-[120px] sm:min-w-[160px] md:min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="w-full h-auto object-contain max-h-16 sm:max-h-20 md:max-h-24"
-                  loading="lazy"
-                  decoding="async"
-                  width="200"
-                  height="96"
-                />
-              </div>
-            ))}
-          </div>
+      {/* Carousel - full width */}
+      <div className="relative w-full overflow-hidden" ref={carouselRef}>
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#614ea5] to-transparent z-10 pointer-events-none"></div>
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#493b7b] to-transparent z-10 pointer-events-none"></div>
+        <div className="flex gap-3 sm:gap-4 md:gap-6 will-change-transform py-1" style={{ transform: 'translate3d(0, 0, 0)' }}>
+          {duplicatedPartners.map((partner, index) => (
+            <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-1.5 sm:p-3 md:p-4 min-w-[100px] sm:min-w-[140px] md:min-w-[180px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="w-full h-auto object-contain max-h-12 sm:max-h-16 md:max-h-20"
+                loading="lazy"
+                decoding="async"
+                width="200"
+                height="96"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>
