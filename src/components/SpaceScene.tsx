@@ -59,6 +59,8 @@ const SpaceScene: React.FC = () => {
       twinkleSpeed: number;    // How fast it twinkles
       twinklePhase: number;    // Current phase in twinkle cycle
       temperature: number;     // Star temperature for realistic colors
+      shockwaveIntensity?: number; // Shockwave brightness multiplier
+      shockwaveLife?: number;      // Remaining shockwave effect duration
     }> = [];
 
     // Explosion particles
@@ -74,6 +76,7 @@ const SpaceScene: React.FC = () => {
         maxLife: number;
         size: number;
         color: string;
+        type: 'simple';
       }>;
     }> = [];
 
@@ -163,18 +166,20 @@ const SpaceScene: React.FC = () => {
       }
     };
 
-    // Create explosion on click (reduced particle count for performance)
+    // Create realistic directional star explosion on click
     const createExplosion = (clickX: number, clickY: number) => {
       const rect = canvas.getBoundingClientRect();
       const x = clickX - rect.left;
       const y = clickY - rect.top;
 
       const particles = [];
-      const particleCount = 30;
+      const particleCount = 40;
 
       for (let i = 0; i < particleCount; i++) {
+        // Create full 360-degree explosion
         const angle = (Math.PI * 2 * i) / particleCount;
-        const velocity = Math.random() * 5 + 2;
+        const velocity = Math.random() * 8 + 4;
+
         particles.push({
           x: x,
           y: y,
@@ -182,12 +187,26 @@ const SpaceScene: React.FC = () => {
           vy: Math.sin(angle) * velocity,
           life: 1,
           maxLife: Math.random() * 60 + 40,
-          size: Math.random() * 3 + 1,
-          color: Math.random() < 0.4 ? '#ffffff' : Math.random() < 0.7 ? '#f0abfc' : '#c084fc' // Brighter explosion colors
+          size: Math.random() * 4 + 2,
+          color: Math.random() < 0.8 ? '#ffffff' : '#b3d9ff',
+          type: 'simple' as const
         });
       }
 
       explosions.push({ x, y, particles });
+
+      // Create shockwave effect on nearby stars
+      const shockwaveRadius = 200;
+      const shockwaveIntensity = 2.0;
+
+      stars.forEach((star) => {
+        const distance = Math.sqrt((star.x - x) ** 2 + (star.y - y) ** 2);
+        if (distance < shockwaveRadius) {
+          // Add shockwave effect to star
+          star.shockwaveIntensity = shockwaveIntensity * (1 - distance / shockwaveRadius);
+          star.shockwaveLife = 60;
+        }
+      });
     };
 
     // Spawn comet
@@ -343,8 +362,8 @@ const SpaceScene: React.FC = () => {
           particle.x += particle.vx;
           particle.y += particle.vy;
           particle.life++;
-          particle.vx *= 0.98; // Friction
-          particle.vy *= 0.98;
+          particle.vx *= 0.99;
+          particle.vy *= 0.99;
 
           const lifeRatio = particle.life / particle.maxLife;
           const alpha = 1 - lifeRatio;
@@ -353,21 +372,21 @@ const SpaceScene: React.FC = () => {
             ctx.save();
             ctx.globalAlpha = alpha;
 
-            // Glow
-            const particleGradient = ctx.createRadialGradient(
+            // Draw supernova particle
+            const glowGradient = ctx.createRadialGradient(
               particle.x, particle.y, 0,
               particle.x, particle.y, particle.size * 3
             );
-            particleGradient.addColorStop(0, particle.color);
-            particleGradient.addColorStop(0.5, particle.color + '80');
-            particleGradient.addColorStop(1, particle.color + '00');
+            glowGradient.addColorStop(0, particle.color);
+            glowGradient.addColorStop(0.6, particle.color + '80');
+            glowGradient.addColorStop(1, particle.color + '00');
 
-            ctx.fillStyle = particleGradient;
+            ctx.fillStyle = glowGradient;
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
             ctx.fill();
 
-            // Center
+            // Core of the particle
             ctx.fillStyle = particle.color;
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
@@ -388,14 +407,21 @@ const SpaceScene: React.FC = () => {
         }
       }
 
-      // Update and draw hyperrealistic stars
+      // Update and draw stars
       stars.forEach((star) => {
-        // Move stars (faster during meteor shower)
+        // Move stars
         star.z -= star.speed * (meteorShowerActive ? 2 : 1);
 
         // Update twinkle effect
         star.twinklePhase += star.twinkleSpeed;
-        const twinkle = Math.sin(star.twinklePhase) * 0.3 + 0.7; // 0.4-1.0 range
+        const twinkle = Math.sin(star.twinklePhase) * 0.3 + 0.7;
+
+        // Update shockwave effect
+        let shockwaveMultiplier = 1.0;
+        if (star.shockwaveLife && star.shockwaveLife > 0) {
+          shockwaveMultiplier = 1.0 + (star.shockwaveIntensity || 0) * (star.shockwaveLife / 60);
+          star.shockwaveLife--;
+        }
 
         // Reset star if it goes too far back
         if (star.z <= 0) {
@@ -419,7 +445,7 @@ const SpaceScene: React.FC = () => {
         if (finalX >= 0 && finalX <= canvas.width && finalY >= 0 && finalY <= canvas.height) {
           const depth = Math.max(0, 1 - star.z / 1000);
           const size = star.size * (200 / star.z);
-          const brightness = star.brightness * twinkle * depth;
+          const brightness = star.brightness * twinkle * depth * shockwaveMultiplier;
 
           ctx.save();
           ctx.globalAlpha = brightness;

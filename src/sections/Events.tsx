@@ -60,9 +60,22 @@ const Events: React.FC = () => {
                 <div className="flex justify-center pt-1">
                   <button
                     onClick={() => navigate(eventLinks[index])}
-                    className="bg-white/20 hover:bg-white/30 text-gray-800 font-inter font-semibold px-3 py-1.5 text-xs rounded-full transition-all duration-200 border border-gray-300/50"
+                    className="bg-black/20 backdrop-blur-lg hover:bg-black/30 text-white font-inter font-semibold px-3 py-1.5 text-xs rounded-full transition-all duration-200 border border-white/20 flex items-center gap-1.5 group"
                   >
                     Learn More
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    >
+                      <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
                   </button>
                 </div>
               </div>

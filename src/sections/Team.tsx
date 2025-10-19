@@ -50,7 +50,7 @@ const Team: React.FC = () => {
                      transform: 'translate3d(0, 0, 0)'
                    }}>
                 {[...firstHalf, ...firstHalf].map((member, index) => (
-                  <div key={`first-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                  <div key={`first-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
                     <div className="relative">
                       <div className={`w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300 transition-opacity duration-300 ${
                         loadedImages.has(index) ? "opacity-100" : "opacity-70"
@@ -67,7 +67,7 @@ const Team: React.FC = () => {
                         />
                       </div>
                     </div>
-                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg">
+                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/25 transition-all duration-300">
                       <div className="font-inter text-black font-medium text-sm">{member.name}</div>
                       <div className="font-inter text-gray-700 text-xs">{member.title}</div>
                     </div>
@@ -86,7 +86,7 @@ const Team: React.FC = () => {
                      transform: 'translate3d(0, 0, 0)'
                    }}>
                 {[...secondHalf, ...secondHalf].map((member, index) => (
-                  <div key={`second-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                  <div key={`second-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
                     <div className="relative">
                       <div className={`w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300 transition-opacity duration-300 ${
                         loadedImages.has(index + firstHalf.length) ? "opacity-100" : "opacity-70"
@@ -103,7 +103,7 @@ const Team: React.FC = () => {
                         />
                       </div>
                     </div>
-                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg">
+                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/25 transition-all duration-300">
                       <div className="font-inter text-black font-medium text-sm">{member.name}</div>
                       <div className="font-inter text-gray-700 text-xs">{member.title}</div>
                     </div>
@@ -117,9 +117,22 @@ const Team: React.FC = () => {
           <div className="mt-8">
             <button
               onClick={() => navigate('/team')}
-              className="bg-white/90 backdrop-blur-lg text-gray-900 font-inter font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:bg-white shadow-md hover:shadow-lg"
+              className="bg-black/20 backdrop-blur-lg text-white font-inter font-semibold px-8 py-3 rounded-full transition-all duration-200 hover:bg-black/30 shadow-lg hover:shadow-xl hover:shadow-purple-500/25 flex items-center gap-2 group"
             >
               View More
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
             </button>
           </div>
         </div>
