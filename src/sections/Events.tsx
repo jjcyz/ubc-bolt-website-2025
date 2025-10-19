@@ -35,7 +35,11 @@ const Events: React.FC = () => {
             ];
 
             return (
-            <div key={index} className="bg-white/20 backdrop-blur-lg rounded-xl p-3 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group active:scale-95 active:shadow-xl active:bg-white/30">
+            <div
+              key={index}
+              className="bg-white/20 backdrop-blur-lg rounded-xl p-3 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group active:scale-95 active:shadow-xl active:bg-white/30"
+              onClick={() => navigate(eventLinks[index])}
+            >
               <div className="w-56 h-56 overflow-hidden rounded-lg mb-2 mx-auto">
                 <img
                   src={getEventImageUrl(event.image)}
@@ -47,7 +51,7 @@ const Events: React.FC = () => {
                   height="338"
                 />
               </div>
-              <div className="space-y-1.5 mt-4 mx-4">
+              <div className="space-y-1.5 mt-4 mx-4 group-hover:text-gray-900 transition-colors duration-300">
                 <h3 className="font-inter text-gray-800 font-bold text-sm">{event.name}</h3>
                 <p className="font-inter text-gray-700 text-xs leading-relaxed line-clamp-3">
                   {eventDescriptions[index]}
@@ -59,7 +63,10 @@ const Events: React.FC = () => {
                 </div>
                 <div className="flex justify-center pt-1">
                   <button
-                    onClick={() => navigate(eventLinks[index])}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(eventLinks[index]);
+                    }}
                     className="bg-black/20 backdrop-blur-lg hover:bg-black/30 text-white font-inter font-semibold px-3 py-1.5 text-xs rounded-full transition-all duration-200 border border-white/20 flex items-center gap-1.5 group active:scale-95 active:bg-black/40 active:shadow-lg"
                   >
                     Learn More
