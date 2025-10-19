@@ -18,12 +18,22 @@ const Partners: React.FC = memo(() => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
+    // Check if device supports hover (desktop) or is touch device (mobile)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
     let animationId: number;
     let position = 0;
     const speed = 1.5; // pixels per frame
-    const partnerWidth = 200; // width of each partner logo
-    const gap = 40; // gap between logos
-    const totalWidth = partnerWidth + gap;
+
+    // Function to get responsive dimensions
+    const getDimensions = () => {
+      const width = window.innerWidth;
+      const partnerWidth = width < 640 ? 120 : width < 768 ? 160 : 200;
+      const gap = width < 640 ? 16 : width < 768 ? 24 : 32;
+      return { partnerWidth, gap, totalWidth: partnerWidth + gap };
+    };
+
+    let dimensions = getDimensions();
     let isPaused = false;
 
     const animate = () => {
@@ -31,7 +41,7 @@ const Partners: React.FC = memo(() => {
         position -= speed;
 
         // Reset position when we've scrolled one full set
-        if (Math.abs(position) >= partners.length * totalWidth) {
+        if (Math.abs(position) >= partners.length * dimensions.totalWidth) {
           position = 0;
         }
 
@@ -43,24 +53,41 @@ const Partners: React.FC = memo(() => {
     // Start animation
     animationId = requestAnimationFrame(animate);
 
-    // Pause animation on hover
-    const handleMouseEnter = () => {
-      isPaused = true;
+    // Handle window resize
+    const handleResize = () => {
+      dimensions = getDimensions();
     };
 
-    const handleMouseLeave = () => {
-      isPaused = false;
-    };
+    window.addEventListener('resize', handleResize);
 
-    carousel.addEventListener('mouseenter', handleMouseEnter);
-    carousel.addEventListener('mouseleave', handleMouseLeave);
+    // Only add hover events for non-touch devices
+    if (!isTouchDevice) {
+      const handleMouseEnter = () => {
+        isPaused = true;
+      };
+
+      const handleMouseLeave = () => {
+        isPaused = false;
+      };
+
+      carousel.addEventListener('mouseenter', handleMouseEnter);
+      carousel.addEventListener('mouseleave', handleMouseLeave);
+
+      return () => {
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+        window.removeEventListener('resize', handleResize);
+        carousel.removeEventListener('mouseenter', handleMouseEnter);
+        carousel.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
 
     return () => {
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
-      carousel.removeEventListener('mouseenter', handleMouseEnter);
-      carousel.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', handleResize);
     };
   }, [partners.length]);
 
@@ -71,14 +98,14 @@ const Partners: React.FC = memo(() => {
           Collaborating with leading organizations to bring real-world data experiences to our community
         </p>
 
-        <div className="relative w-full overflow-x-auto overflow-y-hidden md:overflow-hidden scrollbar-hide">
-          <div className="flex gap-6 md:gap-8 will-change-transform py-2" ref={carouselRef} style={{ transform: 'translate3d(0, 0, 0)' }}>
+        <div className="relative w-full overflow-hidden">
+          <div className="flex gap-4 sm:gap-6 md:gap-8 will-change-transform py-2" ref={carouselRef} style={{ transform: 'translate3d(0, 0, 0)' }}>
             {duplicatedPartners.map((partner, index) => (
-              <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-4 md:p-6 min-w-[160px] md:min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+              <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-2 sm:p-4 md:p-6 min-w-[120px] sm:min-w-[160px] md:min-w-[200px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className="w-full h-auto object-contain max-h-24"
+                  className="w-full h-auto object-contain max-h-16 sm:max-h-20 md:max-h-24"
                   loading="lazy"
                   decoding="async"
                   width="200"
