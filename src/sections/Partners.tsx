@@ -29,8 +29,8 @@ const Partners: React.FC = memo(() => {
       const width = window.innerWidth;
       const partnerWidth = width < 640 ? 120 : width < 768 ? 160 : 200;
       const gap = width < 640 ? 16 : width < 768 ? 24 : 32;
-      // Faster speed on mobile, consistent on larger screens
-      const speed = width < 640 ? 2.5 : width < 768 ? 2.0 : 1.5;
+      // Slower, more stable speed on mobile for better iPhone compatibility
+      const speed = width < 640 ? 1.0 : width < 768 ? 1.5 : 1.5;
       return { partnerWidth, gap, totalWidth: partnerWidth + gap, speed };
     };
 
@@ -45,11 +45,14 @@ const Partners: React.FC = memo(() => {
       }
 
       carousel.style.transform = `translate3d(${position}px, 0, 0)`;
+      carousel.style.willChange = 'transform';
       animationId = requestAnimationFrame(animate);
     };
 
-    // Start animation
-    animationId = requestAnimationFrame(animate);
+    // Start animation with a small delay for better iPhone compatibility
+    setTimeout(() => {
+      animationId = requestAnimationFrame(animate);
+    }, 100);
 
     // Handle window resize
     const handleResize = () => {
@@ -85,15 +88,16 @@ const Partners: React.FC = memo(() => {
         <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#493b7b] to-transparent z-10 pointer-events-none"></div>
         <div className="flex gap-3 sm:gap-4 md:gap-6 will-change-transform py-1" style={{ transform: 'translate3d(0, 0, 0)' }}>
           {duplicatedPartners.map((partner, index) => (
-            <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-1.5 sm:p-3 md:p-4 min-w-[100px] sm:min-w-[140px] md:min-w-[180px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+            <div key={`${partner.name}-${index}`} className="flex-shrink-0 p-1.5 sm:p-3 md:p-4 min-w-[100px] sm:min-w-[140px] md:min-w-[180px] hover:-translate-y-2 transition-transform duration-300 cursor-pointer active:scale-95 active:-translate-y-1">
               <img
                 src={partner.logo}
                 alt={partner.name}
                 className="w-full h-auto object-contain max-h-12 sm:max-h-16 md:max-h-20"
-                loading="lazy"
-                decoding="async"
+                loading="eager"
+                decoding="sync"
                 width="200"
                 height="96"
+                style={{ imageRendering: 'auto' }}
               />
             </div>
           ))}

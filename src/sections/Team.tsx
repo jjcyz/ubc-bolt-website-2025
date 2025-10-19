@@ -54,7 +54,7 @@ const Team: React.FC = () => {
                      transform: 'translate3d(0, 0, 0)'
                    }}>
                 {[...firstHalf, ...firstHalf].map((member, index) => (
-                  <div key={`first-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
+                  <div key={`first-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-all duration-300 cursor-pointer group active:scale-95 active:-translate-y-1">
                     <div className="relative">
                       <div className={`w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300 transition-opacity duration-300 ${
                         loadedImages.has(index) ? "opacity-100" : "opacity-70"
@@ -71,7 +71,7 @@ const Team: React.FC = () => {
                         />
                       </div>
                     </div>
-                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/25 transition-all duration-300">
+                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/25 transition-all duration-300 group-active:shadow-lg group-active:shadow-purple-500/30 group-active:bg-white/30">
                       <div className="font-inter text-black font-medium text-sm">{member.name}</div>
                       <div className="font-inter text-gray-700 text-xs">{member.title}</div>
                     </div>
@@ -94,7 +94,7 @@ const Team: React.FC = () => {
                      transform: 'translate3d(0, 0, 0)'
                    }}>
                 {[...secondHalf, ...secondHalf].map((member, index) => (
-                  <div key={`second-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-all duration-300 cursor-pointer group">
+                  <div key={`second-${index}`} className="flex-shrink-0 flex flex-col items-center hover:-translate-y-2 transition-all duration-300 cursor-pointer group active:scale-95 active:-translate-y-1">
                     <div className="relative">
                       <div className={`w-20 h-20 rounded-full overflow-hidden border-2 border-gray-300 transition-opacity duration-300 ${
                         loadedImages.has(index + firstHalf.length) ? "opacity-100" : "opacity-70"
@@ -111,7 +111,7 @@ const Team: React.FC = () => {
                         />
                       </div>
                     </div>
-                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/25 transition-all duration-300">
+                    <div className="text-center mt-3 bg-white/20 backdrop-blur-md rounded-lg px-3 py-2 border border-white/30 shadow-lg group-hover:shadow-xl group-hover:shadow-purple-500/25 transition-all duration-300 group-active:shadow-lg group-active:shadow-purple-500/30 group-active:bg-white/30">
                       <div className="font-inter text-black font-medium text-sm">{member.name}</div>
                       <div className="font-inter text-gray-700 text-xs">{member.title}</div>
                     </div>

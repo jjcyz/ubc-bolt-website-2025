@@ -48,7 +48,7 @@ const Newsletter: React.FC = memo(() => {
               />
               <button
                 type="submit"
-                className="bg-white/20 text-white font-inter font-semibold px-5 sm:px-6 py-2.5 rounded-full hover:bg-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm whitespace-nowrap flex-shrink-0"
+                className="bg-white/20 text-white font-inter font-semibold px-3 sm:px-5 md:px-6 py-2.5 rounded-full hover:bg-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm whitespace-nowrap flex-shrink-0 active:scale-95 active:bg-white/40 active:shadow-lg"
                 disabled={isLoading || isSubscribed}
               >
                 {isLoading ? "Subscribing..." : isSubscribed ? "Subscribed!" : "Subscribe"}

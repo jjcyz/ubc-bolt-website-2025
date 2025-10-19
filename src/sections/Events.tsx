@@ -35,7 +35,7 @@ const Events: React.FC = () => {
             ];
 
             return (
-            <div key={index} className="bg-white/20 backdrop-blur-lg rounded-xl p-3 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group">
+            <div key={index} className="bg-white/20 backdrop-blur-lg rounded-xl p-3 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group active:scale-95 active:shadow-xl active:bg-white/30">
               <div className="w-56 h-56 overflow-hidden rounded-lg mb-2 mx-auto">
                 <img
                   src={getEventImageUrl(event.image)}
@@ -60,7 +60,7 @@ const Events: React.FC = () => {
                 <div className="flex justify-center pt-1">
                   <button
                     onClick={() => navigate(eventLinks[index])}
-                    className="bg-black/20 backdrop-blur-lg hover:bg-black/30 text-white font-inter font-semibold px-3 py-1.5 text-xs rounded-full transition-all duration-200 border border-white/20 flex items-center gap-1.5 group"
+                    className="bg-black/20 backdrop-blur-lg hover:bg-black/30 text-white font-inter font-semibold px-3 py-1.5 text-xs rounded-full transition-all duration-200 border border-white/20 flex items-center gap-1.5 group active:scale-95 active:bg-black/40 active:shadow-lg"
                   >
                     Learn More
                     <svg
@@ -72,7 +72,7 @@ const Events: React.FC = () => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-active:translate-x-0.25 group-active:-translate-y-0.25 group-active:scale-105"
                     >
                       <path d="M7 17L17 7M17 7H7M17 7V17"/>
                     </svg>
