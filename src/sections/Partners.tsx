@@ -23,20 +23,21 @@ const Partners: React.FC = memo(() => {
 
     let animationId: number;
     let position = 0;
-    const speed = 1.5; // pixels per frame
 
-    // Function to get responsive dimensions
+    // Function to get responsive dimensions and speed
     const getDimensions = () => {
       const width = window.innerWidth;
       const partnerWidth = width < 640 ? 120 : width < 768 ? 160 : 200;
       const gap = width < 640 ? 16 : width < 768 ? 24 : 32;
-      return { partnerWidth, gap, totalWidth: partnerWidth + gap };
+      // Faster speed on mobile, consistent on larger screens
+      const speed = width < 640 ? 2.5 : width < 768 ? 2.0 : 1.5;
+      return { partnerWidth, gap, totalWidth: partnerWidth + gap, speed };
     };
 
     let dimensions = getDimensions();
 
     const animate = () => {
-      position -= speed;
+      position -= dimensions.speed;
 
       // Reset position when we've scrolled one full set
       if (Math.abs(position) >= partners.length * dimensions.totalWidth) {
@@ -70,7 +71,7 @@ const Partners: React.FC = memo(() => {
   return (
     <section className="w-full py-12 md:py-14 bg-gradient-to-r from-[#614ea5] to-[#493b7b] flex flex-col items-center justify-center overflow-hidden" id="Partners">
       {/* Description text - centered with max width */}
-      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-6 md:mb-8">
+      <div className="max-w-6xl w-full mx-auto px-6 sm:px-6 md:px-8 text-center mb-6 md:mb-8">
         <p className="font-inter text-xs sm:text-sm leading-relaxed opacity-90 text-white max-w-2xl mx-auto px-2 break-words">
           Collaborating with leading organizations to bring real-world data experiences to our community
         </p>

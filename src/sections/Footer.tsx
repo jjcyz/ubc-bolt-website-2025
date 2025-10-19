@@ -33,7 +33,7 @@ function Footer() {
 
   return (
     <div className="w-full bg-gradient-to-r from-[#614ea5] to-[#493b7b] text-white py-12 md:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 md:px-8">
         {/* Footer Navigation - Single Row */}
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-center gap-8 mb-8">
           {/* Social Links - Left Side */}

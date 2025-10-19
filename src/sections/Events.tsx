@@ -20,7 +20,7 @@ const Events: React.FC = () => {
 
   return (
     <div className="w-full py-16 md:py-20 bg-gradient-to-br from-[#f8f7f3] to-[#f0ede7]" id="Events">
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="w-full max-w-6xl mx-auto px-6 sm:px-6 md:px-8">
         <div className="mb-6 md:mb-8">
           <h2 className="font-inter text-sm font-normal text-gray-600 mb-2 lowercase italic">Events</h2>
           <h1 className="font-inter text-2xl sm:text-3xl font-bold text-black mb-4 md:mb-6 leading-tight">Our Events</h1>
@@ -36,7 +36,7 @@ const Events: React.FC = () => {
 
             return (
             <div key={index} className="bg-white/20 backdrop-blur-lg rounded-xl p-3 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer group">
-              <div className="w-full aspect-video overflow-hidden rounded-lg mb-2">
+              <div className="w-56 h-56 overflow-hidden rounded-lg mb-2 mx-auto">
                 <img
                   src={getEventImageUrl(event.image)}
                   alt={event.name}
@@ -47,7 +47,7 @@ const Events: React.FC = () => {
                   height="338"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 mt-4 mx-4">
                 <h3 className="font-inter text-gray-800 font-bold text-sm">{event.name}</h3>
                 <p className="font-inter text-gray-700 text-xs leading-relaxed line-clamp-3">
                   {eventDescriptions[index]}
